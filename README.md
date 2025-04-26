@@ -1,51 +1,69 @@
-# House-Price-Prediction
-Data Scientist Project- House Price Prediction
-Your House Price Prediction project uses XGBoost and achieves a **validation RMSE (Root Mean Squared Error)** that wasn't explicitly printed in the notebook output (the model trains and computes it, but the final print statement’s result isn’t saved in the notebook). You may want to **re-run the notebook** to view the actual printed RMSE value.
+🏡 House Price Prediction using XGBoost
+📚 Project Overview
+This project aims to predict house prices based on various features like lot size, year built, overall material quality, and more.
+We used the famous House Prices - Advanced Regression Techniques dataset from Kaggle and built a regression model using XGBoost — one of the most powerful machine learning algorithms for structured/tabular data.
 
-Based on your notebook, here’s a clean and complete **README section** for your project:
+The final model achieved an excellent Validation R² Score of 91.82% and a Validation RMSE of 25,052.45!
 
----
+📂 Dataset
+Training Data: train.csv
 
-## 🏠 House Price Prediction using XGBoost
+Testing Data: test.csv
 
-### 📌 Overview
-This project is a regression model built to predict house prices based on various features using the **XGBoost** algorithm. It uses the **Kaggle House Prices: Advanced Regression Techniques** dataset.
+Features include numeric and categorical data related to properties (e.g., area, year, quality ratings).
 
-### 📁 Dataset
-- Source: [Kaggle - House Prices Dataset](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data)
-- Files used:
-  - `train.csv`
-  - `test.csv`
+Target variable: SalePrice
 
-### 🔧 Features Engineering
-- Missing values handled:
-  - Columns with >80% missing data were dropped.
-  - Remaining numerical missing values were filled with median.
-  - Categorical missing values were filled with mode.
-- All categorical variables were encoded using `LabelEncoder`.
+🛠️ Steps Followed
+Import Libraries: Loaded essential libraries such as pandas, numpy, sklearn, xgboost, and matplotlib.
 
-### 🧠 Model
-- Model used: `XGBoost Regressor`
-- Hyperparameters:
-  - `objective='reg:squarederror'`
-  - `learning_rate=0.05`
-  - `max_depth=3`
-  - `num_boost_round=1000`
-  - `early_stopping_rounds=10`
-- Train/Test Split: 80% training, 20% validation
+Load Dataset: Imported the training and testing data.
 
-### 📊 Evaluation
-- Metric used: **RMSE (Root Mean Squared Error)**
-- Validation RMSE: *(Please re-run the notebook to view the value)*
+Data Preprocessing:
 
-### 🔍 Visualizations
-- Feature importance plotted using `plot_importance()` from XGBoost.
+Dropped columns with more than 80% missing values.
 
-### 🚀 How to Run
-1. Clone the repository or download the notebook.
-2. Make sure you have the required dependencies:
-   ```bash
-   pip install pandas numpy scikit-learn xgboost matplotlib
-   ```
-3. Download and place the dataset files (`train.csv`, `test.csv`) in the appropriate folder.
-4. Run the notebook step by step.
+Handled missing values:
+
+Filled categorical columns with the mode.
+
+Filled numerical columns with the median.
+
+Label Encoded all categorical variables.
+
+Train-Validation Split:
+
+Split the data into training and validation sets (80/20 split).
+
+Model Training:
+
+Created DMatrix for efficient computation.
+
+Tuned hyperparameters like learning_rate, max_depth, min_child_weight, gamma, subsample, colsample_bytree.
+
+Used early stopping to avoid overfitting.
+
+Model Evaluation:
+
+Calculated RMSE and R² Score on the validation set.
+
+Feature Importance:
+
+Plotted the top 10 important features influencing house prices.
+
+📈 Final Model Performance
+
+Metric	Score
+Validation RMSE	25,052.45
+Validation R²	0.9182 (91.82% Accuracy)
+🔥 Key Libraries Used
+pandas: Data loading and manipulation
+
+numpy: Mathematical operations
+
+scikit-learn: Data preprocessing and evaluation metrics
+
+xgboost: Machine learning model
+
+matplotlib: Visualization
+
