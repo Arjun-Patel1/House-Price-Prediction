@@ -1,69 +1,71 @@
-🏡 House Price Prediction using XGBoost
-📚 Project Overview
-This project aims to predict house prices based on various features like lot size, year built, overall material quality, and more.
-We used the famous House Prices - Advanced Regression Techniques dataset from Kaggle and built a regression model using XGBoost — one of the most powerful machine learning algorithms for structured/tabular data.
+# 🏡 House Price Prediction using XGBoost & Streamlit
 
-The final model achieved an excellent Validation R² Score of 91.82% and a Validation RMSE of 25,052.45!
+## Project Overview
 
-📂 Dataset
-Training Data: train.csv
+This project leverages the **House Prices - Advanced Regression Techniques** dataset from Kaggle to predict the sale price of a house based on numerous property features. Initially, an XGBoost regression model was developed and evaluated, achieving excellent performance. The repository has since evolved to include an interactive **Streamlit web application** that lets users input a few key features, while default values fill in the remaining features expected by the model. 
 
-Testing Data: test.csv
+**Key Performance Metrics:**
+- **Validation R² Score:** 91.82%
+- **Validation RMSE:** 25,052.45
 
-Features include numeric and categorical data related to properties (e.g., area, year, quality ratings).
+---
 
-Target variable: SalePrice
+## Dataset Details
 
-🛠️ Steps Followed
-Import Libraries: Loaded essential libraries such as pandas, numpy, sklearn, xgboost, and matplotlib.
+- **Training Data:** `train.csv`
+- **Testing Data:** `test.csv`
+- **Target Variable:** `SalePrice`
+- **Features:** A mix of numerical and categorical data (e.g., area, year built, quality ratings, etc.)
 
-Load Dataset: Imported the training and testing data.
+---
 
-Data Preprocessing:
+## Project Workflow
 
-Dropped columns with more than 80% missing values.
+### 1. Data Preprocessing & Model Training
 
-Handled missing values:
+- **Import Libraries:**  
+  Utilized key libraries such as `pandas`, `numpy`, `scikit-learn`, `xgboost`, and `matplotlib` for data processing, modeling, and visualizations.
 
-Filled categorical columns with the mode.
+- **Data Cleaning & Preprocessing:**  
+  - Dropped columns with more than 80% missing values.  
+  - Handled missing values by filling categorical features with the mode and numerical features with the median.  
+  - Applied Label Encoding to transform categorical variables.
 
-Filled numerical columns with the median.
+- **Train-Validation Split:**  
+  Data was divided into an 80/20 train-validation split.
 
-Label Encoded all categorical variables.
+- **Model Training:**  
+  Constructed training and validation sets using XGBoost’s `DMatrix`. Key hyperparameters such as `learning_rate`, `max_depth`, `min_child_weight`, `gamma`, `subsample`, and `colsample_bytree` were tuned, with early stopping implemented to avoid overfitting.
 
-Train-Validation Split:
+- **Model Evaluation:**  
+  Evaluated using RMSE and R², and analyzed feature importance using XGBoost's visualization tools.
 
-Split the data into training and validation sets (80/20 split).
+---
 
-Model Training:
+### 2. Enhancing Accessibility with a Web App (New Update!)
 
-Created DMatrix for efficient computation.
+To make the model accessible and user-friendly, a **Streamlit web application** was developed with the following features:
 
-Tuned hyperparameters like learning_rate, max_depth, min_child_weight, gamma, subsample, colsample_bytree.
+- **Interactive User Interface:**  
+  Users provide key property details (e.g., Overall Quality, Above Ground Living Area, Garage Cars, Total Basement Area, Year Built) via an intuitive sidebar.
 
-Used early stopping to avoid overfitting.
+- **Full-Model Integration:**  
+  The original model was trained on a comprehensive set of features. For web app predictions, a full feature vector is constructed by filling unprovided inputs with default values (currently set to 0, though these can be updated to more representative medians).
 
-Model Evaluation:
+- **Real-Time Predictions:**  
+  Upon clicking the "Predict House Price" button, the app converts user input to the expected format, passes it to the XGBoost model, and displays the estimated sale price.
 
-Calculated RMSE and R² Score on the validation set.
+- **Running the App:**  
+  The app can be launched locally using the command `streamlit run appp.py`.
 
-Feature Importance:
+---
 
-Plotted the top 10 important features influencing house prices.
+## How to Run the Project Locally
 
-📈 Final Model Performance
+### Clone the Repository
 
-Metric	Score
-Validation RMSE	25,052.45
-Validation R²	0.9182 (91.82% Accuracy)
-🔥 Key Libraries Used
-pandas: Data loading and manipulation
+```bash
+git clone https://github.com/your-username/House-Price-Prediction.git
+cd House-Price-Prediction
 
-numpy: Mathematical operations
-
-scikit-learn: Data preprocessing and evaluation metrics
-
-xgboost: Machine learning model
-
-matplotlib: Visualization
 
